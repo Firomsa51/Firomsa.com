@@ -1002,6 +1002,42 @@
             e.preventDefault();
             alert('Thank you for your message! (This is a demo - actually implement form submission)');
         });
+
+        // Animated counters with Intersection Observer
+document.addEventListener('DOMContentLoaded', function() {
+    const counters = document.querySelectorAll('.stat-number');
+    const speed = 200; // lower = faster animation
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = +counter.getAttribute('data-target');
+                
+                // Skip if no target or already animated
+                if (!target || counter.classList.contains('animated')) return;
+                
+                const updateCount = () => {
+                    const current = +counter.innerText;
+                    const increment = target / speed;
+                    
+                    if (current < target) {
+                        counter.innerText = Math.ceil(current + increment);
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        counter.innerText = target;
+                        counter.classList.add('animated');
+                    }
+                };
+                
+                updateCount();
+                observer.unobserve(counter); // Stop observing once started
+            }
+        });
+    }, { threshold: 0.3 }); // Trigger when 30% visible
+
+    counters.forEach(counter => observer.observe(counter));
+});
     </script>
     <!-- Optional: Add typed.js if you want a typing effect, but we removed it to keep simple -->
 </body>
