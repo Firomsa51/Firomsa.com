@@ -222,21 +222,66 @@
             position: relative;
             overflow: hidden;
         }
-        /* Profile image above "View our work" */
+        /* HERO PROFILE CONTAINER */
 .hero-profile {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
-.hero-profile img {
-    width: 220px;        /* increase size */
+/* AVATAR IMAGE */
+.hero-profile .avatar {
+    width: 220px;
+    max-width: 80%;
     height: auto;
-    border-radius: 0;    /* remove circle */
-    object-fit: cover;
+
+    border-radius: 16px; /* soft rectangle */
+    
+    /* Shadow */
+    box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.25),
+        0 0 0 1px rgba(255, 255, 255, 0.15);
+
+    /* Glass effect */
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.08);
+
+    /* Animation */
+    animation: floatAvatar 4s ease-in-out infinite;
+
+    /* Hover smoothness */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* HOVER EFFECT 🔥 */
+.hero-profile .avatar:hover {
+    transform: scale(1.08) rotate(1deg);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.35),
+        0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+/* FLOATING ANIMATION (Animated Avatar) */
+@keyframes floatAvatar {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* 📱 MOBILE RESPONSIVE */
+@media (max-width: 600px) {
+    .hero-profile .avatar {
+        width: 160px;
+        border-radius: 14px;
+    }
 }
         
-
         .hero-content {
             text-align: center;
             max-width: 800px;
@@ -726,9 +771,9 @@
         
         <!-- Profile image moved here -->
         <div class="hero-profile-image">
-            <img src="images/profile.jpg" alt="Firomsa Ahmed">
+            <img src="images/profile.jpg" alt="Firomsa Ahmed"class="avatar">
         </div>
-        
+
         <!-- Buttons section -->
         <div class="hero-buttons">
             <a href="#projects" class="btn btn-primary">View OUR Work</a>
