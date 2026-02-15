@@ -1,1 +1,40 @@
-<style> .profile-image { width: 50%; } /* Reduces the profile image size */ .some-class { margin-top: 20px; margin-bottom: 20px; } /* Adjusts the margin */ .box-shadow { box-shadow: none; } /* Removes box-shadow */ </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .profile {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: none; /* No shadow */
+        }
+        .profile img {
+            width: 60px; /* Profile image size */
+            height: 60px; /* Profile image size */
+            border: none; /* No border */
+            margin-bottom: 10px; /* Proper margin spacing */
+        }
+    </style>
+</head>
+<body>
+    <div class="profile">
+        <img src="path/to/profile_image.jpg" alt="Profile Image">
+        <h1>Your Name</h1>
+        <p>Your bio goes here.</p>
+    </div>
+</body>
+</html>
