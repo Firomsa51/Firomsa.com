@@ -222,22 +222,20 @@
             position: relative;
             overflow: hidden;
         }
-        .hero-profile-image {
-    width: 100px;
-    height: auto;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 1 auto 2rem; /* Centered, with space below */
-    border: 3px solid white;
-    box-shadow:  0px 0px 10px rgba(0,0,0,0.5);
+        /* Profile image above "View our work" */
+.hero-profile {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
-
-.hero-profile-image img {
-    width: 60%;
+.hero-profile img {
+    width: 220px;        /* increase size */
     height: auto;
+    border-radius: 0;    /* remove circle */
     object-fit: cover;
 }
+        
 
         .hero-content {
             text-align: center;
