@@ -69,10 +69,10 @@
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             position: relative;
         }
 
@@ -91,39 +91,53 @@
         .bg-light {
             background-color: var(--light);
         }
-
         .btn {
-            display: inline-block;
-            padding: 0.75rem 2rem;
-            border-radius: 9999px;
-            font-weight: 600;
-            transition: var(--transition);
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-        }
+    display: inline-block;
+    padding: 0.6rem 2rem; /* Reduced padding */
+    border-radius: 50px; /* More modern, rounded */
+    font-weight: 500; /* Medium weight, not bold */
+    font-size: 0.95rem; /* Slightly smaller */
+    letter-spacing: 0.5px; /* Add a touch of spacing */
+    transition: var(--transition);
+    cursor: pointer;
+    border: 1.5px solid transparent; /* Prepare for outline */
+    text-decoration: none;
+}
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
-        }
+.btn-primary {
+    background-color: transparent;
+    border-color: var(--primary); /* Outline style */
+    color: var(--primary);
+}
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.4);
-        }
+.btn-primary:hover {
+    background-color: var(--primary);
+    color: white;
+}
 
-        .btn-outline {
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            background: transparent;
-        }
+.btn-outline {
+    border: 1.5px solid var(--primary);
+    color: var(--primary);
+    background: transparent;
+}
 
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-        }
+.btn-outline:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+/* Remove the full-width button style on mobile */
+@media (max-width: 768px) {
+    .btn {
+        width: auto; /* Prevent full width */
+    }
+    .hero-buttons {
+        flex-direction: row; /* Keep buttons side-by-side */
+        justify-content: center;
+    }
+}
+
+        
 
         /* ===== NAVBAR ===== */
         .navbar {
@@ -208,6 +222,21 @@
             position: relative;
             overflow: hidden;
         }
+        .hero-profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 1.5rem; /* Centered, with space below */
+    border: 3px solid white;
+    box-shadow: 0 10px 20px -5px rgba(0,0,0,0.1);
+}
+
+.hero-profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
         .hero-content {
             text-align: center;
@@ -222,13 +251,19 @@
             letter-spacing: 2px;
             text-transform: uppercase;
         }
+        
 
+        
         .hero-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-        }
+    font-size: 2.8rem; /* Reduced from 3.5rem */
+    font-weight: 700; /* Slightly lighter */
+    line-height: 1.3;
+    margin-bottom: 1.2rem;
+    max-width: 900px; /* Control line length for elegance */
+    margin-left: auto;
+    margin-right: auto;
+       }
+
 
         .hero-title span {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -237,11 +272,13 @@
         }
 
         .hero-description {
-            font-size: 1.2rem;
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto 2rem;
+        
+           font-size: 1.1rem; /* Slightly reduced */
+           color: var(--gray);
+           max-width: 650px; /* Narrower for better readability */
+           margin: 0 auto 2rem;
         }
+        
 
         .hero-buttons {
             display: flex;
@@ -299,7 +336,7 @@
         }
 
         .stat-number {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 800;
             line-height: 1;
         }
@@ -342,8 +379,8 @@
         }
 
         .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
         }
 
         .service-card p {
@@ -682,6 +719,9 @@
 
     <!-- Hero -->
     <section id="home" class="hero">
+        <div class="hero-profile-image">
+    <img src="images/your-photo.jpg" alt="Firomsa Ahmed">
+</div>
         <div class="container hero-content">
             <p class="hero-subtitle">CREATIVE TECHNOLOGIST & DESIGNER</p>
             <h1 class="hero-title">I craft <span>digital tools</span> that empower communities.</h1>
