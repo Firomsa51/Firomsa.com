@@ -980,113 +980,60 @@
 
     <!-- JavaScript -->
     <script>
-        // Mobile menu toggle
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-
-        // Active link highlighting on scroll
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // Animated counters (Intersection Observer)
-        const counters = document.querySelectorAll('.stat-number');
-        const speed = 200; // lower = faster
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counter = entry.target;
-                    const target = +counter.getAttribute('data-target');
-                    const updateCount = () => {
-                        const current = +counter.innerText;
-                        const increment = target / speed;
-                        if (current < target) {
-                            counter.innerText = Math.ceil(current + increment);
-                            setTimeout(updateCount, 10);
-                        } else {
-                            counter.innerText = target;
-                        }
-                    };
-                    updateCount();
-                    observer.unobserve(counter); // stop observing after animation
-                }
-            });
-        }, { threshold: 0.5 });
-
-        counters.forEach(counter => observer.observe(counter));
-
-        // Contact form simple alert
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! (This is a demo - actually implement form submission)');
-        });
-
-        // Animated counters with Intersection Observer
-document.addEventListener('DOMContentLoaded', function() {
-    const counters = document.querySelectorAll('.stat-number');
-    const speed = 200; // lower = faster animation
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const counter = entry.target;
-                const target = +counter.getAttribute('data-target');
-                
-                // Skip if no target or already animated
-                if (!target || counter.classList.contains('animated')) return;
-                
-                const updateCount = () => {
-                    const current = +counter.innerText;
-                    const increment = target / speed;
-                    
-                    if (current < target) {
-                        counter.innerText = Math.ceil(current + increment);
-                        requestAnimationFrame(updateCount);
-                    } else {
-                        counter.innerText = target;
-                        counter.classList.add('animated');
-                    }
-                };
-                
-                updateCount();
-                observer.unobserve(counter); // Stop observing once started
-            }
-        });
-    }, { threshold: 0.3 }); // Trigger when 30% visible
-
-    counters.forEach(counter => observer.observe(counter));
+/* ===== Mobile Menu JS (already included) ===== */
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
 });
-    </script>
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+});
+
+/* ===== Stats Number Animation ===== */
+function animateStats() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    statNumbers.forEach(stat => {
+        const target = +stat.getAttribute('data-target');
+        const duration = 1200; // ms (animation duration)
+        const start = 0;
+        let startTime = null;
+
+        function updateNumber(timestamp) {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            stat.textContent = Math.floor(progress * target);
+            if (progress < 1) {
+                requestAnimationFrame(updateNumber);
+            } else {
+                stat.textContent = target; // ensure final value
+            }
+        }
+        requestAnimationFrame(updateNumber);
+    });
+}
+
+// Animate when stats section enters viewport
+let statsAnimated = false;
+function handleScrollStats() {
+    const statsSection = document.querySelector('.stats-section');
+    if (!statsSection) return;
+    const statsPosition = statsSection.getBoundingClientRect().top;
+    if (statsPosition < window.innerHeight - 100 && !statsAnimated) {
+        animateStats();
+        statsAnimated = true;
+        window.removeEventListener('scroll', handleScrollStats);
+    }
+}
+window.addEventListener('scroll', handleScrollStats);
+// Also run once on load:
+handleScrollStats();
+</script>
+    
     <!-- Optional: Add typed.js if you want a typing effect, but we removed it to keep simple -->
 </body>
 </html>
