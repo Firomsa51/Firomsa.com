@@ -39,14 +39,17 @@
         html {
             scroll-behavior: smooth;
         }
-
         body {
-            font-family: 'Inter', sans-serif;
-            color: var(--dark);
-            line-height: 1.5;
-            background-color: #ffffff;
-            overflow-x: hidden;
-        }
+    font-family: 'Inter', sans-serif;
+    color: var(--dark);
+    line-height: 1.5;
+    background-color: #ffffff;
+    overflow-x: hidden; /* Gara mirgaatti akka hin shubifne */
+    width: 100%;        /* Screen guutuu akka qabatu */
+    position: relative;
+}
+
+        
 
         a {
             text-decoration: none;
@@ -328,6 +331,7 @@
             border-top: 1px solid rgba(0,0,0,0.05);
             border-bottom: 1px solid rgba(0,0,0,0.05);
             margin-top: 2rem;
+            position: relative;
         }
 
         .marquee-content {
