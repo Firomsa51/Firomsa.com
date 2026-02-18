@@ -2,16 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Firomsa Ahmed · creative technologist</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6 (free) -->
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Typed.js for dynamic hero text -->
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <style>
         /* ===== RESET & VARIABLES ===== */
         :root {
@@ -46,6 +44,8 @@
             line-height: 1.5;
             background-color: #ffffff;
             overflow-x: hidden;
+            word-wrap: break-word;
+            hyphens: auto;
         }
 
         a {
@@ -106,7 +106,7 @@
             background-color: #f1f5f9;
         }
 
-        /* ===== BUTTONS (elevated) ===== */
+        /* ===== BUTTONS ===== */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -151,7 +151,7 @@
             box-shadow: var(--shadow-hover);
         }
 
-        /* ===== NAVBAR (glass) ===== */
+        /* ===== NAVBAR ===== */
         .navbar {
             background: var(--glass-bg);
             backdrop-filter: blur(16px) saturate(180%);
@@ -231,7 +231,7 @@
             border-radius: 6px;
         }
 
-        /* ===== HERO (elevated) ===== */
+        /* ===== HERO (exact screenshot layout) ===== */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -248,15 +248,42 @@
             text-align: center;
             max-width: 900px;
             margin: 0 auto;
+            width: 100%;
         }
 
+        /* Subtitle as four stacked lines on mobile, inline on desktop */
         .hero-subtitle {
             font-size: 1.2rem;
             color: var(--gray);
             margin-bottom: 1.2rem;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             font-weight: 500;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.4;
+            width: 100%;
+        }
+
+        .hero-subtitle-line {
+            display: block;
+            white-space: nowrap; /* prevent unwanted wrapping inside each line */
+        }
+
+        @media (min-width: 769px) {
+            .hero-subtitle {
+                flex-direction: row;
+                justify-content: center;
+                gap: 0.3rem;
+            }
+            .hero-subtitle-line {
+                display: inline;
+            }
+            .hero-subtitle-line:not(:last-child)::after {
+                content: ' ';
+                white-space: pre;
+            }
         }
 
         .hero-title {
@@ -268,13 +295,7 @@
             margin-left: auto;
             margin-right: auto;
             letter-spacing: -0.02em;
-        }
-
-        .hero-title .typed {
-            background: linear-gradient(145deg, var(--primary), var(--secondary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
+            word-break: break-word;
         }
 
         .hero-description {
@@ -282,6 +303,23 @@
             color: var(--gray);
             max-width: 650px;
             margin: 0 auto 2rem;
+            word-break: break-word;
+        }
+
+        /* Digital Presence badge */
+        .digital-badge {
+            display: inline-block;
+            background: rgba(37,99,235,0.1);
+            color: var(--primary);
+            font-weight: 600;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(37,99,235,0.3);
+            backdrop-filter: blur(4px);
+            font-size: 1rem;
+            letter-spacing: 1px;
+            white-space: nowrap;
         }
 
         .hero-profile-image {
@@ -316,6 +354,7 @@
             gap: 1.2rem;
             justify-content: center;
             margin-bottom: 3rem;
+            flex-wrap: wrap;
         }
 
         /* Marquee */
@@ -351,7 +390,7 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* ===== STATS (glass) ===== */
+        /* ===== STATS ===== */
         .stats-section {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
@@ -460,6 +499,7 @@
         .service-card p {
             color: var(--gray);
             transition: var(--transition);
+            word-break: break-word;
         }
 
         /* ===== IMPACT ===== */
@@ -473,12 +513,15 @@
         .impact-content p {
             font-size: 1.2rem;
             color: var(--gray);
+            word-break: break-word;
         }
 
         .impact-stats {
             display: flex;
             gap: 3rem;
             margin-top: 2.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .impact-stat {
@@ -487,7 +530,7 @@
             padding: 1.5rem;
             border-radius: 2rem;
             box-shadow: var(--shadow-sm);
-            flex: 1;
+            flex: 1 1 120px;
         }
 
         .impact-stat .number {
@@ -502,6 +545,7 @@
             border-radius: 2rem;
             box-shadow: 0 30px 40px -20px rgba(0,0,0,0.3);
             transition: var(--transition);
+            width: 100%;
         }
 
         .impact-image img:hover {
@@ -511,7 +555,7 @@
         /* ===== PROJECTS ===== */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
@@ -551,6 +595,10 @@
             margin-bottom: 0.5rem;
         }
 
+        .project-content p {
+            word-break: break-word;
+        }
+
         .project-tags {
             display: flex;
             flex-wrap: wrap;
@@ -570,6 +618,7 @@
         .project-links {
             display: flex;
             gap: 1.5rem;
+            flex-wrap: wrap;
         }
 
         .project-links a {
@@ -613,12 +662,14 @@
             font-size: 3rem;
             font-weight: 700;
             margin-bottom: 1rem;
+            word-break: break-word;
         }
 
         .toolkit-content p {
             font-size: 1.3rem;
             opacity: 0.85;
             margin-bottom: 2.5rem;
+            word-break: break-word;
         }
 
         .toolkit-btn {
@@ -685,6 +736,7 @@
         .contact-item a {
             color: var(--gray);
             font-weight: 500;
+            word-break: break-word;
         }
 
         .contact-form {
@@ -729,6 +781,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .social-links {
@@ -753,7 +807,7 @@
             transform: translateY(-5px) scale(1.1);
         }
 
-        /* ===== scroll top ===== */
+        /* ===== SCROLL TOP ===== */
         .scroll-top {
             position: fixed;
             bottom: 2rem;
@@ -785,7 +839,7 @@
             transform: scale(1.1);
         }
 
-        /* ===== RESPONSIVE ===== */
+        /* ===== ENHANCED MOBILE RESPONSIVENESS ===== */
         @media (max-width: 900px) {
             .impact-grid,
             .contact-container {
@@ -829,22 +883,94 @@
                 width: 100%;
                 max-width: 260px;
             }
-            .footer-content {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
         }
 
-        @media (max-width: 500px) {
-            .stats-grid {
-                grid-template-columns: 1fr;
+        @media (max-width: 600px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            .hero-description {
+                font-size: 1.1rem;
+            }
+            .avatar {
+                width: 170px;
+                height: 170px;
             }
             .section-title {
                 font-size: 2rem;
             }
+        }
+
+        @media (max-width: 480px) {
             .hero-title {
-                font-size: 2.1rem;
+                font-size: 1.9rem;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+                letter-spacing: 1.5px;
+            }
+            .hero-description {
+                font-size: 1rem;
+            }
+            .digital-badge {
+                font-size: 0.9rem;
+                padding: 0.4rem 1.2rem;
+                white-space: normal; /* allow wrap if needed */
+            }
+            .btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+                max-width: 220px;
+            }
+            .avatar {
+                width: 150px;
+                height: 150px;
+            }
+            .stat-number {
+                font-size: 2.2rem;
+            }
+            .stat-label {
+                font-size: 0.9rem;
+            }
+            .service-card h3 {
+                font-size: 1.4rem;
+            }
+            .project-content h3 {
+                font-size: 1.3rem;
+            }
+            .toolkit-content h2 {
+                font-size: 2.2rem;
+            }
+            .toolkit-content p {
+                font-size: 1.1rem;
+            }
+            .toolkit-btn {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+            .contact-item h3 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .hero-title {
+                font-size: 1.7rem;
+            }
+            .avatar {
+                width: 130px;
+                height: 130px;
+            }
+            .container {
+                width: 95%;
+                padding: 0 0.5rem;
+            }
+            .marquee-content span {
+                font-size: 1.1rem;
+                margin-right: 1.8rem;
+            }
+            .hero-subtitle-line {
+                white-space: normal; /* allow last resort wrapping */
             }
         }
     </style>
@@ -870,15 +996,27 @@
         </div>
     </nav>
 
-    <!-- Hero with typed.js -->
+    <!-- Hero – exact screenshot match -->
     <section id="home" class="hero">
         <div class="container hero-content">
-            <p class="hero-subtitle">CREATIVE TECHNOLOGIST</p>
-            <h1 class="hero-title">I craft <span class="typed"></span></h1>
+            <!-- Subtitle broken into four lines (no extra spaces) -->
+            <div class="hero-subtitle">
+                <span class="hero-subtitle-line">CREATIVE</span>
+                <span class="hero-subtitle-line">TECHNOLOGIST |</span>
+                <span class="hero-subtitle-line">DEVELOPER &</span>
+                <span class="hero-subtitle-line">DESIGNER</span>
+            </div>
+
+            <!-- Static heading as in screenshot -->
+            <h1 class="hero-title">I craft web experiences</h1>
+
             <p class="hero-description">I blend design and development to build systems, websites, and experiences that make a difference in Ethiopia and beyond.</p>
+
+            <!-- Digital Presence badge (replaces [Digital Presse]) -->
+            <div class="digital-badge">Digital Presence Design</div>
             
             <div class="hero-profile-image">
-                <!-- Replace 'images/profile.jpg' with the path to your own photo -->
+                <!-- Replace with your own photo path -->
                 <img src="images/profile.jpg" alt="Firomsa Ahmed" class="avatar">
             </div>
 
@@ -888,7 +1026,7 @@
             </div>
         </div>
         
-        <!-- Marquee -->
+        <!-- Marquee (includes Digital Presence) -->
         <div class="marquee">
             <div class="marquee-content">
                 <span>Digital Presence Design •</span>
@@ -899,7 +1037,7 @@
                 <span>Student Systems •</span>
                 <span>Web Development •</span>
                 <span>UX Engineering •</span>
-                <!-- duplicate -->
+                <!-- duplicate for seamless loop -->
                 <span>Digital Presence Design •</span>
                 <span>Custom Software •</span>
                 <span>Data Architecture •</span>
@@ -912,7 +1050,7 @@
         </div>
     </section>
 
-    <!-- Stats (improved) -->
+    <!-- Stats -->
     <section class="stats-section">
         <div class="container stats-grid">
             <div class="stat-item"><span class="stat-number" data-target="28">0</span><span class="stat-label">Projects Delivered</span></div>
@@ -936,7 +1074,7 @@
         </div>
     </section>
 
-    <!-- Impact -->
+    <!-- Impact / Teaching Section -->
     <section id="impact" class="section bg-soft">
         <div class="container">
             <h2 class="section-title"><span>Building the next generation</span></h2>
@@ -984,7 +1122,7 @@
             <h2 class="section-title"><span>Get in touch</span></h2>
             <div class="contact-container">
                 <div class="contact-info">
-                    <div class="contact-item"><i class="fas fa-envelope"></i><h3>Email</h3><p><a href="mailto:firomsaahmed51@gmail.com">firomsaahmed51@gmail.com</a></p></div>
+                    <div class="contact-item"><i class="fas fa-envelope"></i><h3>Email</h3><p><a href="mailto:firomsa.ahmed@creativetech.et">firomsa.ahmed@creativetech.et</a></p></div>
                     <div class="contact-item"><i class="fab fa-telegram"></i><h3>Telegram</h3><p><a href="https://t.me/Fira385508" target="_blank">@Fira385508</a></p></div>
                     <div class="contact-item"><i class="fas fa-map-marker-alt"></i><h3>Location</h3><p>Ethiopia / remote worldwide</p></div>
                 </div>
@@ -1031,24 +1169,14 @@
                 });
             });
 
-            // Typed.js
-            new Typed('.typed', {
-                strings: ['digital tools', 'web experiences', 'community systems', 'brand identities'],
-                typeSpeed: 80,
-                backSpeed: 50,
-                loop: true,
-                smartBackspace: true,
-                backDelay: 2000
-            });
-
-            // Stats counter (trigger once)
+            // Stats counter
             let statsAnimated = false;
             const statNumbers = document.querySelectorAll('.stat-number');
             function animateStats() {
                 statNumbers.forEach(stat => {
                     const target = +stat.getAttribute('data-target');
                     let current = 0;
-                    const increment = target / 30; // smooth
+                    const increment = target / 30;
                     const timer = setInterval(() => {
                         current += increment;
                         if (current >= target) {
@@ -1072,9 +1200,9 @@
                 }
             }
             window.addEventListener('scroll', checkStatsInView);
-            checkStatsInView(); // on load
+            checkStatsInView();
 
-            // Active nav highlight (Intersection Observer)
+            // Active nav highlight
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('.nav-link');
             const observer = new IntersectionObserver(entries => {
@@ -1105,14 +1233,12 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // Contact form dummy preventDefault
+            // Contact form
             document.getElementById('contactForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 alert('✨ Thank you for reaching out! (demo form — we’ll respond soon.)');
                 this.reset();
             });
-
-            // Smooth anchor links (already smooth with css)
         })();
     </script>
 </body>
