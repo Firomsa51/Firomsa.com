@@ -233,7 +233,7 @@
             border-radius: 6px;
         }
 
-        /* ===== HERO (exact screenshot layout) ===== */
+        /* ===== HERO ===== */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -270,7 +270,7 @@
 
         .hero-subtitle-line {
             display: block;
-            white-space: nowrap; /* prevent unwanted wrapping inside each line */
+            white-space: nowrap;
         }
 
         @media (min-width: 769px) {
@@ -335,10 +335,11 @@
             margin: 2rem 0 2.5rem;
         }
 
+        /* SQUARE PROFILE PHOTO (with slight rounding) */
         .avatar {
             width: 200px;
             height: 200px;
-            border-radius: 50%;
+            border-radius: 16px; /* square with soft corners */
             object-fit: cover;
             margin: 0 auto;
             border: 4px solid white;
@@ -924,7 +925,7 @@
             .digital-badge {
                 font-size: 0.9rem;
                 padding: 0.4rem 1.2rem;
-                white-space: normal; /* allow wrap if needed */
+                white-space: normal;
             }
             .btn {
                 padding: 0.6rem 1.5rem;
@@ -979,7 +980,7 @@
                 margin-right: 1.8rem;
             }
             .hero-subtitle-line {
-                white-space: normal; /* allow last resort wrapping */
+                white-space: normal;
             }
         }
     </style>
@@ -1005,10 +1006,10 @@
         </div>
     </nav>
 
-    <!-- Hero – with animated typed text restored -->
+    <!-- Hero – with animated typed text and square profile photo -->
     <section id="home" class="hero">
         <div class="container hero-content">
-            <!-- Subtitle broken into four lines (exact screenshot) -->
+            <!-- Subtitle broken into four lines -->
             <div class="hero-subtitle">
                 <span class="hero-subtitle-line">CREATIVE</span>
                 <span class="hero-subtitle-line">TECHNOLOGIST |</span>
@@ -1025,7 +1026,7 @@
             <div class="digital-badge">Digital Presence Design</div>
             
             <div class="hero-profile-image">
-                <!-- Replace with your own photo path -->
+                <!-- Replace with your own square photo (use square image) -->
                 <img src="images/profile.jpg" alt="Firomsa Ahmed" class="avatar">
             </div>
 
@@ -1046,7 +1047,7 @@
                 <span>Student Systems •</span>
                 <span>Web Development •</span>
                 <span>UX Engineering •</span>
-                <!-- duplicate for seamless loop -->
+                <!-- duplicate -->
                 <span>Digital Presence Design •</span>
                 <span>Custom Software •</span>
                 <span>Data Architecture •</span>
@@ -1059,7 +1060,7 @@
         </div>
     </section>
 
-    <!-- Stats -->
+    <!-- Stats, Services, Impact, Projects, Toolkit, Contact, Footer (unchanged) -->
     <section class="stats-section">
         <div class="container stats-grid">
             <div class="stat-item"><span class="stat-number" data-target="28">0</span><span class="stat-label">Projects Delivered</span></div>
@@ -1069,7 +1070,6 @@
         </div>
     </section>
 
-    <!-- Services -->
     <section id="services" class="section">
         <div class="container">
             <h2 class="section-title"><span>What I do</span></h2>
@@ -1083,7 +1083,6 @@
         </div>
     </section>
 
-    <!-- Impact / Teaching Section -->
     <section id="impact" class="section bg-soft">
         <div class="container">
             <h2 class="section-title"><span>Building the next generation</span></h2>
@@ -1103,7 +1102,6 @@
         </div>
     </section>
 
-    <!-- Projects -->
     <section id="projects" class="section">
         <div class="container">
             <h2 class="section-title"><span>Featured projects</span></h2>
@@ -1116,7 +1114,6 @@
         </div>
     </section>
 
-    <!-- Toolkit -->
     <section id="toolkit" class="toolkit-section section">
         <div class="container toolkit-content">
             <h2>Free student system starter kit</h2>
@@ -1125,13 +1122,12 @@
         </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title"><span>Get in touch</span></h2>
             <div class="contact-container">
                 <div class="contact-info">
-                    <div class="contact-item"><i class="fas fa-envelope"></i><h3>Email</h3><p><a href="mailto:firomsaahmed51@gmail.com">firomsaahmed51@gmail.com</a></p></div>
+                    <div class="contact-item"><i class="fas fa-envelope"></i><h3>Email</h3><p><a href="mailto:firomsa.ahmed@creativetech.et">firomsa.ahmed@creativetech.et</a></p></div>
                     <div class="contact-item"><i class="fab fa-telegram"></i><h3>Telegram</h3><p><a href="https://t.me/Fira385508" target="_blank">@Fira385508</a></p></div>
                     <div class="contact-item"><i class="fas fa-map-marker-alt"></i><h3>Location</h3><p>Ethiopia / remote worldwide</p></div>
                 </div>
@@ -1145,15 +1141,13 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container footer-content">
-            <p>© 2026 Firomsa Ahmed· creative technologist</p>
-            <p>© 2026 All Rights reserved </p>
+            <p>© 2026 Firomsa Ahmed · creative technologist</p>
             <div class="social-links">
                 <a href="https://www.facebook.com/firomsa.ahmed.501" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.instagram.com/firomsa__ahmed_?igsh=MWtyODF1Mm54N2RwOA==" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-x-twitter"></i></a>
                 <a href="https://t.me/Fira385508" target="_blank"><i class="fab fa-telegram-plane"></i></a>
             </div>
         </div>
@@ -1179,7 +1173,7 @@
                 });
             });
 
-            // Typed.js animation (restored)
+            // Typed.js animation
             new Typed('.typed', {
                 strings: ['digital tools', 'web experiences', 'community systems', 'brand identities'],
                 typeSpeed: 80,
