@@ -792,19 +792,17 @@
         }
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            .impact-grid,
-            .contact-container {
-                grid-template-columns: 1fr;
+            /* 1. Body irratti shubisa dhoorkuuf */
+            body {
+                overflow-x: hidden;
+                width: 100vw;
+                position: relative;
             }
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
 
-        @media (max-width: 768px) {
             .hamburger {
                 display: flex;
             }
+
             .nav-menu {
                 position: fixed;
                 left: -100%;
@@ -817,43 +815,64 @@
                 padding: 2.5rem 0;
                 gap: 1.8rem;
                 transition: 0.4s;
-                box-shadow: 0 20px 30px rgba(0,0,0,0.1);
-                border-bottom: 1px solid rgba(255,255,255,0.3);
             }
+
             .nav-menu.active {
                 left: 0;
             }
 
-            /* --- HERO MOBILE FIX --- */
-              .hero-content {
-        padding: 0 1.5rem;
-        text-align: center; /* Barreeffama hunda gidduu galcha */
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Button fi suuraa gidduu galcha */
-    }
-    
-            
+            /* 2. Hero Content Gidduu Galchuuf (Kun isa Screenshot kee sirreessu dha) */
+            .hero-content {
+                padding: 0 1rem;
+                text-align: center;
+                display: flex; /* Dabali */
+                flex-direction: column; /* Dabali */
+                align-items: center; /* Barreeffama hunda gidduu galcha */
+                justify-content: center;
+                width: 100%;
+            }
+
             .hero-title {
-                font-size: 2.2rem;
+                font-size: 2rem; /* Xinnoo xinnaysi akka sarara hin cinne */
+                line-height: 1.2;
+                margin: 0 auto 1.5rem;
+                display: block;
                 width: 100%;
-                margin-left: auto;
-                margin-right: auto;
             }
+
             .hero-description {
-                font-size: 1.1rem;
-                margin: 0 auto 2rem; /* Gidduu galchuuf */
-                width: 100%;
+                font-size: 1rem;
+                margin: 0 auto 2rem;
+                max-width: 100%;
             }
+
+            /* 3. Marquee akka hiriira hin dhabne */
+            .marquee {
+                width: 100vw;
+                margin-left: calc(-50vw + 50%);
+                position: relative;
+                left: 0;
+            }
+
             .hero-buttons {
                 flex-direction: column;
+                width: 100%;
                 align-items: center;
                 gap: 1rem;
             }
+
             .btn {
-                width: 100%;
-                max-width: 280px;
+                width: 90%; /* Moobaayila irratti bal'ina qabaata */
+                max-width: 300px;
             }
+            
+            .avatar {
+                width: 150px; /* Moobaayila irratti xinnoo xinnaysi */
+                height: 150px;
+            }
+        }
+        
+        
             /* ----------------------- */
 
             .footer-content {
