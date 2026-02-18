@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Firomsa Ahmed · creative technologist</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6 -->
+    <!-- Font Awesome 6 (free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Typed.js for dynamic hero text -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <style>
         /* ===== RESET & VARIABLES ===== */
         :root {
@@ -44,7 +46,6 @@
             line-height: 1.5;
             background-color: #ffffff;
             overflow-x: hidden;
-            word-wrap: break-word;
         }
 
         a {
@@ -105,7 +106,7 @@
             background-color: #f1f5f9;
         }
 
-        /* ===== BUTTONS ===== */
+        /* ===== BUTTONS (elevated) ===== */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -150,7 +151,7 @@
             box-shadow: var(--shadow-hover);
         }
 
-        /* ===== NAVBAR ===== */
+        /* ===== NAVBAR (glass) ===== */
         .navbar {
             background: var(--glass-bg);
             backdrop-filter: blur(16px) saturate(180%);
@@ -230,7 +231,7 @@
             border-radius: 6px;
         }
 
-        /* ===== HERO (EXACTLY AS SCREENSHOT) ===== */
+        /* ===== HERO (elevated) ===== */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -249,38 +250,13 @@
             margin: 0 auto;
         }
 
-        /* Subtitle broken into four lines exactly as in screenshot */
         .hero-subtitle {
             font-size: 1.2rem;
             color: var(--gray);
             margin-bottom: 1.2rem;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             font-weight: 500;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            line-height: 1.4;
-        }
-
-        .hero-subtitle-line {
-            display: block;
-        }
-
-        /* On larger screens, keep inline */
-        @media (min-width: 769px) {
-            .hero-subtitle {
-                flex-direction: row;
-                justify-content: center;
-                gap: 0.3rem;
-            }
-            .hero-subtitle-line {
-                display: inline;
-            }
-            .hero-subtitle-line:not(:last-child)::after {
-                content: ' ';
-                white-space: pre;
-            }
         }
 
         .hero-title {
@@ -294,26 +270,18 @@
             letter-spacing: -0.02em;
         }
 
+        .hero-title .typed {
+            background: linear-gradient(145deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
         .hero-description {
             font-size: 1.2rem;
             color: var(--gray);
             max-width: 650px;
             margin: 0 auto 2rem;
-        }
-
-        /* Digital Presence badge (replaces [Digital Presse] from screenshot) */
-        .digital-badge {
-            display: inline-block;
-            background: rgba(37,99,235,0.1);
-            color: var(--primary);
-            font-weight: 600;
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(37,99,235,0.3);
-            backdrop-filter: blur(4px);
-            font-size: 1rem;
-            letter-spacing: 1px;
         }
 
         .hero-profile-image {
@@ -383,7 +351,7 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* ===== STATS ===== */
+        /* ===== STATS (glass) ===== */
         .stats-section {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
@@ -785,7 +753,7 @@
             transform: translateY(-5px) scale(1.1);
         }
 
-        /* ===== SCROLL TOP ===== */
+        /* ===== scroll top ===== */
         .scroll-top {
             position: fixed;
             bottom: 2rem;
@@ -817,7 +785,7 @@
             transform: scale(1.1);
         }
 
-        /* ===== ENHANCED MOBILE RESPONSIVENESS ===== */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 900px) {
             .impact-grid,
             .contact-container {
@@ -868,88 +836,15 @@
             }
         }
 
-        @media (max-width: 600px) {
-            .hero-title {
-                font-size: 2.2rem;
-            }
-            .hero-description {
-                font-size: 1.1rem;
-            }
-            .avatar {
-                width: 170px;
-                height: 170px;
+        @media (max-width: 500px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
             }
             .section-title {
                 font-size: 2rem;
             }
-        }
-
-        @media (max-width: 480px) {
             .hero-title {
-                font-size: 1.9rem;
-            }
-            .hero-subtitle {
-                font-size: 1rem;
-                letter-spacing: 1.5px;
-            }
-            .hero-description {
-                font-size: 1rem;
-            }
-            .digital-badge {
-                font-size: 0.9rem;
-                padding: 0.4rem 1.2rem;
-            }
-            .btn {
-                padding: 0.6rem 1.5rem;
-                font-size: 0.9rem;
-                max-width: 220px;
-            }
-            .avatar {
-                width: 150px;
-                height: 150px;
-            }
-            .stat-number {
-                font-size: 2.2rem;
-            }
-            .stat-label {
-                font-size: 0.9rem;
-            }
-            .service-card h3 {
-                font-size: 1.4rem;
-            }
-            .project-content h3 {
-                font-size: 1.3rem;
-            }
-            .toolkit-content h2 {
-                font-size: 2.2rem;
-            }
-            .toolkit-content p {
-                font-size: 1.1rem;
-            }
-            .toolkit-btn {
-                padding: 0.8rem 2rem;
-                font-size: 1rem;
-            }
-            .contact-item h3 {
-                font-size: 1.5rem;
-            }
-        }
-
-        @media (max-width: 380px) {
-            .hero-title {
-                font-size: 1.7rem;
-            }
-            .avatar {
-                width: 130px;
-                height: 130px;
-            }
-            .container {
-                width: 95%;
-                padding: 0 0.5rem;
-            }
-            .marquee-content span {
-                font-size: 1.1rem;
-                margin-right: 1.8rem;
+                font-size: 2.1rem;
             }
         }
     </style>
@@ -975,27 +870,15 @@
         </div>
     </nav>
 
-    <!-- Hero – exactly as screenshot -->
+    <!-- Hero with typed.js -->
     <section id="home" class="hero">
         <div class="container hero-content">
-            <!-- Subtitle broken into four lines -->
-            <div class="hero-subtitle">
-                <span class="hero-subtitle-line">CREATIVE</span>
-                <span class="hero-subtitle-line">TECHNOLOGIST |</span>
-                <span class="hero-subtitle-line">DEVELOPER &</span>
-                <span class="hero-subtitle-line">DESIGNER</span>
-            </div>
-
-            <!-- Static heading as in screenshot -->
-            <h1 class="hero-title">I craft web experiences</h1>
-
+            <p class="hero-subtitle">CREATIVE TECHNOLOGIST</p>
+            <h1 class="hero-title">I craft <span class="typed"></span></h1>
             <p class="hero-description">I blend design and development to build systems, websites, and experiences that make a difference in Ethiopia and beyond.</p>
-
-            <!-- Digital Presence badge (replaces [Digital Presse]) -->
-            <div class="digital-badge">Digital Presence Design</div>
             
             <div class="hero-profile-image">
-                <!-- Replace with your own photo path -->
+                <!-- Replace 'images/profile.jpg' with the path to your own photo -->
                 <img src="images/profile.jpg" alt="Firomsa Ahmed" class="avatar">
             </div>
 
@@ -1005,7 +888,7 @@
             </div>
         </div>
         
-        <!-- Marquee (unchanged, includes Digital Presence) -->
+        <!-- Marquee -->
         <div class="marquee">
             <div class="marquee-content">
                 <span>Digital Presence Design •</span>
@@ -1029,7 +912,7 @@
         </div>
     </section>
 
-    <!-- Stats, Services, Impact, Projects, Toolkit, Contact, Footer (unchanged) -->
+    <!-- Stats (improved) -->
     <section class="stats-section">
         <div class="container stats-grid">
             <div class="stat-item"><span class="stat-number" data-target="28">0</span><span class="stat-label">Projects Delivered</span></div>
@@ -1039,6 +922,7 @@
         </div>
     </section>
 
+    <!-- Services -->
     <section id="services" class="section">
         <div class="container">
             <h2 class="section-title"><span>What I do</span></h2>
@@ -1052,6 +936,7 @@
         </div>
     </section>
 
+    <!-- Impact -->
     <section id="impact" class="section bg-soft">
         <div class="container">
             <h2 class="section-title"><span>Building the next generation</span></h2>
@@ -1071,6 +956,7 @@
         </div>
     </section>
 
+    <!-- Projects -->
     <section id="projects" class="section">
         <div class="container">
             <h2 class="section-title"><span>Featured projects</span></h2>
@@ -1083,6 +969,7 @@
         </div>
     </section>
 
+    <!-- Toolkit -->
     <section id="toolkit" class="toolkit-section section">
         <div class="container toolkit-content">
             <h2>Free student system starter kit</h2>
@@ -1091,6 +978,7 @@
         </div>
     </section>
 
+    <!-- Contact -->
     <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title"><span>Get in touch</span></h2>
@@ -1110,6 +998,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container footer-content">
             <p>© 2026 Firomsa Ahmed · creative technologist</p>
@@ -1125,7 +1014,7 @@
     <!-- Scroll top button -->
     <div class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></div>
 
-    <!-- JavaScript (only essential; typed.js removed as per static heading) -->
+    <!-- JavaScript -->
     <script>
         (function() {
             // Mobile menu
@@ -1142,14 +1031,24 @@
                 });
             });
 
-            // Stats counter
+            // Typed.js
+            new Typed('.typed', {
+                strings: ['digital tools', 'web experiences', 'community systems', 'brand identities'],
+                typeSpeed: 80,
+                backSpeed: 50,
+                loop: true,
+                smartBackspace: true,
+                backDelay: 2000
+            });
+
+            // Stats counter (trigger once)
             let statsAnimated = false;
             const statNumbers = document.querySelectorAll('.stat-number');
             function animateStats() {
                 statNumbers.forEach(stat => {
                     const target = +stat.getAttribute('data-target');
                     let current = 0;
-                    const increment = target / 30;
+                    const increment = target / 30; // smooth
                     const timer = setInterval(() => {
                         current += increment;
                         if (current >= target) {
@@ -1173,9 +1072,9 @@
                 }
             }
             window.addEventListener('scroll', checkStatsInView);
-            checkStatsInView();
+            checkStatsInView(); // on load
 
-            // Active nav highlight
+            // Active nav highlight (Intersection Observer)
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('.nav-link');
             const observer = new IntersectionObserver(entries => {
@@ -1206,12 +1105,14 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // Contact form
+            // Contact form dummy preventDefault
             document.getElementById('contactForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 alert('✨ Thank you for reaching out! (demo form — we’ll respond soon.)');
                 this.reset();
             });
+
+            // Smooth anchor links (already smooth with css)
         })();
     </script>
 </body>
