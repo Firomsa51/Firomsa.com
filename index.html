@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Typed.js for animated text -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <style>
         /* ===== RESET & VARIABLES ===== */
         :root {
@@ -296,6 +298,13 @@
             margin-right: auto;
             letter-spacing: -0.02em;
             word-break: break-word;
+        }
+
+        .hero-title .typed {
+            background: linear-gradient(145deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
         }
 
         .hero-description {
@@ -996,10 +1005,10 @@
         </div>
     </nav>
 
-    <!-- Hero – exact screenshot match -->
+    <!-- Hero – with animated typed text restored -->
     <section id="home" class="hero">
         <div class="container hero-content">
-            <!-- Subtitle broken into four lines (no extra spaces) -->
+            <!-- Subtitle broken into four lines (exact screenshot) -->
             <div class="hero-subtitle">
                 <span class="hero-subtitle-line">CREATIVE</span>
                 <span class="hero-subtitle-line">TECHNOLOGIST |</span>
@@ -1007,12 +1016,12 @@
                 <span class="hero-subtitle-line">DESIGNER</span>
             </div>
 
-            <!-- Static heading as in screenshot -->
-            <h1 class="hero-title">I craft web experiences</h1>
+            <!-- Animated heading -->
+            <h1 class="hero-title">I craft <span class="typed"></span></h1>
 
             <p class="hero-description">I blend design and development to build systems, websites, and experiences that make a difference in Ethiopia and beyond.</p>
 
-            <!-- Digital Presence badge (replaces [Digital Presse]) -->
+            <!-- Digital Presence badge -->
             <div class="digital-badge">Digital Presence Design</div>
             
             <div class="hero-profile-image">
@@ -1026,7 +1035,7 @@
             </div>
         </div>
         
-        <!-- Marquee (includes Digital Presence) -->
+        <!-- Marquee -->
         <div class="marquee">
             <div class="marquee-content">
                 <span>Digital Presence Design •</span>
@@ -1122,7 +1131,7 @@
             <h2 class="section-title"><span>Get in touch</span></h2>
             <div class="contact-container">
                 <div class="contact-info">
-                    <div class="contact-item"><i class="fas fa-envelope"></i><h3>Email</h3><p><a href="mailto:firomsa.ahmed@creativetech.et">firomsa.ahmed@creativetech.et</a></p></div>
+                    <div class="contact-item"><i class="fas fa-envelope"></i><h3>Email</h3><p><a href="mailto:firomsaahmed51@gmail.com">firomsaahmed51@gmail.com</a></p></div>
                     <div class="contact-item"><i class="fab fa-telegram"></i><h3>Telegram</h3><p><a href="https://t.me/Fira385508" target="_blank">@Fira385508</a></p></div>
                     <div class="contact-item"><i class="fas fa-map-marker-alt"></i><h3>Location</h3><p>Ethiopia / remote worldwide</p></div>
                 </div>
@@ -1139,11 +1148,12 @@
     <!-- Footer -->
     <footer>
         <div class="container footer-content">
-            <p>© 2026 Firomsa Ahmed · creative technologist</p>
+            <p>© 2026 Firomsa Ahmed· creative technologist</p>
+            <p>© 2026 All Rights reserved </p>
             <div class="social-links">
                 <a href="https://www.facebook.com/firomsa.ahmed.501" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/firomsa__ahmed_?igsh=MWtyODF1Mm54N2RwOA==" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="https://t.me/Fira385508" target="_blank"><i class="fab fa-telegram-plane"></i></a>
             </div>
         </div>
@@ -1167,6 +1177,16 @@
                     hamburger.classList.remove('active');
                     navMenu.classList.remove('active');
                 });
+            });
+
+            // Typed.js animation (restored)
+            new Typed('.typed', {
+                strings: ['digital tools', 'web experiences', 'community systems', 'brand identities'],
+                typeSpeed: 80,
+                backSpeed: 50,
+                loop: true,
+                smartBackspace: true,
+                backDelay: 2000
             });
 
             // Stats counter
