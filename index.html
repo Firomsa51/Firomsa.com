@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Firomsa Ahmed ·  Creative Technologist | Developer & Designer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Firomsa Ahmed · creative technologist</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6 (free) -->
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Typed.js for dynamic hero text -->
+    <!-- Typed.js -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <style>
         /* ===== RESET & VARIABLES ===== */
@@ -39,18 +39,15 @@
         html {
             scroll-behavior: smooth;
         }
+
         body {
-    font-family: 'Inter', sans-serif;
-    color: var(--dark);
-    line-height: 1.5;
-    background-color: #ffffff;
-    overflow-x: hidden; /* Gara mirgaatti akka hin shubifne */
-    width: 100%;        /* Screen guutuu akka qabatu */
-    position: relative;
-    margin: 0;
-    padding: 0;
-}
-          
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            line-height: 1.5;
+            background-color: #ffffff;
+            overflow-x: hidden;
+            word-wrap: break-word;
+        }
 
         a {
             text-decoration: none;
@@ -68,8 +65,8 @@
         }
 
         .container {
-            width: 100%;
-            max-width: 1100px;
+            width: 90%;
+            max-width: 1280px;
             margin: 0 auto;
             padding: 0 1rem;
         }
@@ -110,7 +107,7 @@
             background-color: #f1f5f9;
         }
 
-        /* ===== BUTTONS (elevated) ===== */
+        /* ===== BUTTONS ===== */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -155,7 +152,7 @@
             box-shadow: var(--shadow-hover);
         }
 
-        /* ===== NAVBAR (glass) ===== */
+        /* ===== NAVBAR ===== */
         .navbar {
             background: var(--glass-bg);
             backdrop-filter: blur(16px) saturate(180%);
@@ -235,7 +232,7 @@
             border-radius: 6px;
         }
 
-        /* ===== HERO (elevated) ===== */
+        /* ===== HERO ===== */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -332,8 +329,6 @@
             border-top: 1px solid rgba(0,0,0,0.05);
             border-bottom: 1px solid rgba(0,0,0,0.05);
             margin-top: 2rem;
-            position: relative;
-            left: 0;
         }
 
         .marquee-content {
@@ -357,7 +352,7 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* ===== STATS (glass) ===== */
+        /* ===== STATS ===== */
         .stats-section {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
@@ -759,7 +754,7 @@
             transform: translateY(-5px) scale(1.1);
         }
 
-        /* ===== scroll top ===== */
+        /* ===== SCROLL TOP ===== */
         .scroll-top {
             position: fixed;
             bottom: 2rem;
@@ -790,19 +785,22 @@
             background: var(--secondary);
             transform: scale(1.1);
         }
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            /* 1. Body irratti shubisa dhoorkuuf */
-            body {
-                overflow-x: hidden;
-                width: 100vw;
-                position: relative;
-            }
 
+        /* ===== ENHANCED MOBILE RESPONSIVENESS ===== */
+        @media (max-width: 900px) {
+            .impact-grid,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
             .hamburger {
                 display: flex;
             }
-
             .nav-menu {
                 position: fixed;
                 left: -100%;
@@ -815,66 +813,23 @@
                 padding: 2.5rem 0;
                 gap: 1.8rem;
                 transition: 0.4s;
+                box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+                border-bottom: 1px solid rgba(255,255,255,0.3);
             }
-
             .nav-menu.active {
                 left: 0;
             }
-
-            /* 2. Hero Content Gidduu Galchuuf (Kun isa Screenshot kee sirreessu dha) */
-            .hero-content {
-                padding: 0 1rem;
-                text-align: center;
-                display: flex; /* Dabali */
-                flex-direction: column; /* Dabali */
-                align-items: center; /* Barreeffama hunda gidduu galcha */
-                justify-content: center;
-                width: 100%;
-            }
-
             .hero-title {
-                font-size: 2rem; /* Xinnoo xinnaysi akka sarara hin cinne */
-                line-height: 1.2;
-                margin: 0 auto 1.5rem;
-                display: block;
-                width: 100%;
+                font-size: 2.5rem;
             }
-
-            .hero-description {
-                font-size: 1rem;
-                margin: 0 auto 2rem;
-                max-width: 100%;
-            }
-
-            /* 3. Marquee akka hiriira hin dhabne */
-            .marquee {
-                width: 100vw;
-                margin-left: calc(-50vw + 50%);
-                position: relative;
-                left: 0;
-            }
-
             .hero-buttons {
                 flex-direction: column;
-                width: 100%;
                 align-items: center;
-                gap: 1rem;
             }
-
             .btn {
-                width: 90%; /* Moobaayila irratti bal'ina qabaata */
-                max-width: 300px;
+                width: 100%;
+                max-width: 260px;
             }
-            
-            .avatar {
-                width: 150px; /* Moobaayila irratti xinnoo xinnaysi */
-                height: 150px;
-            }
-        }
-        
-        
-            /* ----------------------- */
-
             .footer-content {
                 flex-direction: column;
                 gap: 1rem;
@@ -882,23 +837,94 @@
             }
         }
 
-        @media (max-width: 500px) {
-            .stats-grid {
-                grid-template-columns: 1fr;
+        @media (max-width: 600px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+                letter-spacing: 2px;
+            }
+            .hero-description {
+                font-size: 1.1rem;
+            }
+            .avatar {
+                width: 170px;
+                height: 170px;
             }
             .section-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
+        }
+
+        @media (max-width: 480px) {
             .hero-title {
                 font-size: 1.9rem;
             }
-            /* Marquee moobaayila irratti akka hin garmaleeffanne */
-            .marquee-content span {
+            .hero-subtitle {
+                font-size: 0.9rem;
+                letter-spacing: 1.5px;
+            }
+            .hero-description {
                 font-size: 1rem;
-                margin-right: 1.5rem;
+            }
+            .btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+                max-width: 220px;
+            }
+            .avatar {
+                width: 150px;
+                height: 150px;
+            }
+            .stat-number {
+                font-size: 2.2rem;
+            }
+            .stat-label {
+                font-size: 0.9rem;
+            }
+            .service-card h3 {
+                font-size: 1.4rem;
+            }
+            .project-content h3 {
+                font-size: 1.3rem;
+            }
+            .toolkit-content h2 {
+                font-size: 2.2rem;
+            }
+            .toolkit-content p {
+                font-size: 1.1rem;
+            }
+            .toolkit-btn {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+            .contact-item h3 {
+                font-size: 1.5rem;
             }
         }
-        </style>
+
+        @media (max-width: 380px) {
+            .hero-title {
+                font-size: 1.7rem;
+            }
+            .hero-subtitle {
+                font-size: 0.8rem;
+            }
+            .avatar {
+                width: 130px;
+                height: 130px;
+            }
+            .container {
+                width: 95%;
+                padding: 0 0.5rem;
+            }
+            .marquee-content span {
+                font-size: 1.1rem;
+                margin-right: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar -->
@@ -924,12 +950,12 @@
     <!-- Hero with typed.js -->
     <section id="home" class="hero">
         <div class="container hero-content">
-            <p class="hero-subtitle">Creative Technologist | Developer & Designer</p>
+            <p class="hero-subtitle">CREATIVE TECHNOLOGIST | DEVELOPER & DESIGNER</p>
             <h1 class="hero-title">I craft <span class="typed"></span></h1>
             <p class="hero-description">I blend design and development to build systems, websites, and experiences that make a difference in Ethiopia and beyond.</p>
             
             <div class="hero-profile-image">
-                <!-- Replace 'images/profile.jpg' with the path to your own photo -->
+                <!-- Replace with your own photo path -->
                 <img src="images/profile.jpg" alt="Firomsa Ahmed" class="avatar">
             </div>
 
@@ -963,7 +989,7 @@
         </div>
     </section>
 
-    <!-- Stats (improved) -->
+    <!-- Stats -->
     <section class="stats-section">
         <div class="container stats-grid">
             <div class="stat-item"><span class="stat-number" data-target="28">0</span><span class="stat-label">Projects Delivered</span></div>
@@ -1035,7 +1061,7 @@
             <h2 class="section-title"><span>Get in touch</span></h2>
             <div class="contact-container">
                 <div class="contact-info">
-                    <div class="contact-item"><i class="fas fa-envelope"></i><h3>Email</h3><p><a href="mailto:firomsaahmed51@gmail.com">firomsaahmed51@gmail.com</a></p></div>
+                    <div class="contact-item"><i class="fas fa-envelope"></i><h3>Email</h3><p><a href="mailto:firomsa.ahmed@creativetech.et">firomsa.ahmed@creativetech.et</a></p></div>
                     <div class="contact-item"><i class="fab fa-telegram"></i><h3>Telegram</h3><p><a href="https://t.me/Fira385508" target="_blank">@Fira385508</a></p></div>
                     <div class="contact-item"><i class="fas fa-map-marker-alt"></i><h3>Location</h3><p>Ethiopia / remote worldwide</p></div>
                 </div>
@@ -1052,8 +1078,7 @@
     <!-- Footer -->
     <footer>
         <div class="container footer-content">
-            <p>© 2026 Firomsa Ahmed·</p>
-            <p> © All rights reserved.</p>
+            <p>© 2026 Firomsa Ahmed · creative technologist</p>
             <div class="social-links">
                 <a href="https://www.facebook.com/firomsa.ahmed.501" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
@@ -1093,14 +1118,14 @@
                 backDelay: 2000
             });
 
-            // Stats counter (trigger once)
+            // Stats counter
             let statsAnimated = false;
             const statNumbers = document.querySelectorAll('.stat-number');
             function animateStats() {
                 statNumbers.forEach(stat => {
                     const target = +stat.getAttribute('data-target');
                     let current = 0;
-                    const increment = target / 30; // smooth
+                    const increment = target / 30;
                     const timer = setInterval(() => {
                         current += increment;
                         if (current >= target) {
@@ -1124,9 +1149,9 @@
                 }
             }
             window.addEventListener('scroll', checkStatsInView);
-            checkStatsInView(); // on load
+            checkStatsInView();
 
-            // Active nav highlight (Intersection Observer)
+            // Active nav highlight
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('.nav-link');
             const observer = new IntersectionObserver(entries => {
@@ -1157,14 +1182,12 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // Contact form dummy preventDefault
+            // Contact form
             document.getElementById('contactForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 alert('✨ Thank you for reaching out! (demo form — we’ll respond soon.)');
                 this.reset();
             });
-
-            // Smooth anchor links (already smooth with css)
         })();
     </script>
 </body>
