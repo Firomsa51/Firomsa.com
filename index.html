@@ -47,9 +47,10 @@
     overflow-x: hidden; /* Gara mirgaatti akka hin shubifne */
     width: 100%;        /* Screen guutuu akka qabatu */
     position: relative;
+    margin: 0;
+    padding: 0;
 }
-
-        
+          
 
         a {
             text-decoration: none;
@@ -332,6 +333,7 @@
             border-bottom: 1px solid rgba(0,0,0,0.05);
             margin-top: 2rem;
             position: relative;
+            left: 0;
         }
 
         .marquee-content {
@@ -789,7 +791,7 @@
             transform: scale(1.1);
         }
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 900px) {
+        @media (max-width: 768px) {
             .impact-grid,
             .contact-container {
                 grid-template-columns: 1fr;
@@ -823,18 +825,25 @@
             }
 
             /* --- HERO MOBILE FIX --- */
-            .hero-content {
-                padding: 0 20px;
-                text-align: center; /* Barreeffama hunda gidduu galcha */
-            }
+              .hero-content {
+        padding: 0 1.5rem;
+        text-align: center; /* Barreeffama hunda gidduu galcha */
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Button fi suuraa gidduu galcha */
+    }
+    
+            
             .hero-title {
                 font-size: 2.2rem;
+                width: 100%;
                 margin-left: auto;
                 margin-right: auto;
             }
             .hero-description {
                 font-size: 1.1rem;
                 margin: 0 auto 2rem; /* Gidduu galchuuf */
+                width: 100%;
             }
             .hero-buttons {
                 flex-direction: column;
