@@ -333,13 +333,14 @@
 
         .hero-profile-image {
             margin: 2rem 0 2.5rem;
+            cursor: pointer; /* Indicate clickable */
         }
 
         /* SQUARE PROFILE PHOTO (with slight rounding) */
         .avatar {
             width: 200px;
             height: 200px;
-            border-radius: 16px; /* square with soft corners */
+            border-radius: 16px;
             object-fit: cover;
             margin: 0 auto;
             border: 4px solid white;
@@ -849,6 +850,49 @@
             transform: scale(1.1);
         }
 
+        /* ===== LIGHTBOX MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border: 4px solid white;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
         /* ===== ENHANCED MOBILE RESPONSIVENESS ===== */
         @media (max-width: 900px) {
             .impact-grid,
@@ -986,6 +1030,12 @@
     </style>
 </head>
 <body>
+    <!-- Lightbox Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImage" src="" alt="Full size profile">
+    </div>
+
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container nav-container">
@@ -1025,9 +1075,9 @@
             <!-- Digital Presence badge -->
             <div class="digital-badge">Digital Presence Design</div>
             
-            <div class="hero-profile-image">
+            <div class="hero-profile-image" id="profileImageContainer">
                 <!-- Replace with your own square photo (use square image) -->
-                <img src="images/profile.jpg" alt="Firomsa Ahmed" class="avatar">
+                <img src="images/profile.jpg" alt="Firomsa Ahmed" class="avatar" id="profileAvatar">
             </div>
 
             <div class="hero-buttons">
@@ -1252,6 +1302,30 @@
                 e.preventDefault();
                 alert('✨ Thank you for reaching out! (demo form — we’ll respond soon.)');
                 this.reset();
+            });
+
+            // ===== LIGHTBOX FOR PROFILE IMAGE =====
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const avatar = document.getElementById('profileAvatar');
+            const closeBtn = document.querySelector('.close-modal');
+
+            if (avatar) {
+                avatar.addEventListener('click', function() {
+                    modal.classList.add('active');
+                    modalImg.src = this.src; // use same image source
+                });
+            }
+
+            // Close modal when clicking on close button or outside the image
+            closeBtn.addEventListener('click', function() {
+                modal.classList.remove('active');
+            });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
             });
         })();
     </script>
